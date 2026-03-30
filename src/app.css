@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+	--color-primary: #0f172a;
+	--color-secondary: #334155;
+	--color-cta: #ca8a04;
+	--color-surface: #f8fafc;
+	--color-ink: #020617;
+	--color-warm-gray: #e8e4df;
+	--color-muted: #94a3b8;
+
+	--font-display: 'Cinzel', Georgia, serif;
+	--font-body: 'Josefin Sans', system-ui, sans-serif;
+}
+
+@layer base {
+	html {
+		font-family: var(--font-body);
+		background-color: var(--color-surface);
+		color: var(--color-ink);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		letter-spacing: 0.02em;
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-cta);
+		outline-offset: 3px;
+	}
+}
+
+/* Page transitions */
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+}
+
+@keyframes fade-out {
+	to {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	::view-transition-old(root) {
+		animation: 200ms ease both fade-out;
+	}
+
+	::view-transition-new(root) {
+		animation: 300ms ease both fade-in;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
+	}
+}

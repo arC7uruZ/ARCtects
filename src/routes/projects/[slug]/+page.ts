@@ -1,0 +1,18 @@
+import { projects } from '$lib/data/projects';
+import { error } from '@sveltejs/kit';
+import type { PageLoad, EntryGenerator } from './$types';
+
+export const entries: EntryGenerator = () => {
+	return projects.map((p) => ({ slug: p.slug }));
+};
+
+export const load: PageLoad = ({ params }) => {
+	const project = projects.find((p) => p.slug === params.slug);
+	if (!project) throw error(404, 'Project not found');
+
+	const related = projects
+		.filter((p) => p.slug !== project.slug && p.category === project.category)
+		.slice(0, 3);
+
+	return { project, related };
+};
