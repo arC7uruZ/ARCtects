@@ -3,5 +3,6 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()]
+    base: '/ARCtects/',
+	plugins: [tailwindcss(), sveltekit()],
 });
