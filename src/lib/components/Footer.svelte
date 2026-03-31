@@ -15,7 +15,7 @@
 			<!-- Marca -->
 			<div>
 				<a
-					href="/"
+					href={resolve("/")}
 					class="font-display text-2xl font-semibold tracking-widest text-white hover:text-[var(--color-cta)] transition-colors duration-200"
 				>
 					ARC<span class="font-light">tects</span>
