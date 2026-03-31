@@ -11,7 +11,7 @@ import type { Project } from '$lib/types';
 </script>
 
 <a
-	href={resolve("/projects/{project.slug}")}
+	href={resolve(`/projects/${project.slug}`)}
 	class="group block cursor-pointer"
 	aria-label="Ver projeto {project.title}"
 >

@@ -44,7 +44,7 @@
 	>
 		<!-- Logo -->
 		<a
-			href="/"
+			href={resolve("/")}
 			class="font-display text-xl font-semibold tracking-widest text-white transition-colors duration-200 hover:text-[var(--color-cta)]"
 		>
 			ARC<span class="font-light">tects</span>

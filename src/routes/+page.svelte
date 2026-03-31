@@ -39,7 +39,7 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 			Espaço<br />Como Arte
 		</h1>
 		<a
-			href="/projects"
+			href={resolve("/projects")}
 			class="inline-flex items-center gap-4 font-body text-[11px] tracking-[0.25em] uppercase text-white transition-all duration-300 cursor-pointer px-8 py-4"
 			style="border: 1px solid rgba(255,255,255,0.4);"
 			onmouseenter={(e) => {
