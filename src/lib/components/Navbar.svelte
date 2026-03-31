@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+    import { resolve } from '$app/paths';
 
 	let scrolled = $state(false);
 	let menuOpen = $state(false);
@@ -21,9 +22,9 @@
 	});
 
 	const links = [
-		{ href: '/projects', label: 'Projetos' },
-		{ href: '/about', label: 'Sobre' },
-		{ href: '/contact', label: 'Contato' }
+		{ href: resolve('/projects'), label: 'Projetos' },
+		{ href: resolve('/about'), label: 'Sobre' },
+		{ href: resolve('/contact'), label: 'Contato' }
 	];
 
 	function isActive(href: string): boolean {

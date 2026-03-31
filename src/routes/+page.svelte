@@ -1,5 +1,6 @@
 <script lang="ts">
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import { resolve } from '$app/paths';
+import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { featuredProjects } from '$lib/data/projects';
 </script>
 
@@ -100,7 +101,7 @@
 				</h2>
 			</div>
 			<a
-				href="/projects"
+				href={resolve("/projects")}
 				class="hidden md:flex items-center gap-2 font-body text-[11px] tracking-[0.2em] uppercase transition-colors duration-200 cursor-pointer"
 				style="color: var(--color-secondary);"
 				onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-ink)')}
@@ -121,7 +122,7 @@
 
 		<div class="mt-12 md:hidden">
 			<a
-				href="/projects"
+				href={resolve("/projects")}
 				class="flex items-center gap-2 font-body text-[11px] tracking-[0.2em] uppercase"
 				style="color: var(--color-secondary);"
 			>
@@ -163,7 +164,7 @@
 					substância e beleza duradoura.
 				</p>
 				<a
-					href="/about"
+					href={resolve("/about")}
 					class="inline-flex items-center gap-3 font-body text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-200"
 					style="color: var(--color-cta);"
 					onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'white')}

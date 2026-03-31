@@ -1,5 +1,6 @@
 <script lang="ts">
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import { resolve } from '$app/paths';
+import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -182,7 +183,7 @@
 <!-- Link de volta -->
 <div class="py-12 max-w-7xl mx-auto px-6 lg:px-12">
 	<a
-		href="/projects"
+		href={resolve("/projects")}
 		class="inline-flex items-center gap-3 font-body text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-200"
 		style="color: var(--color-secondary);"
 		onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-ink)')}

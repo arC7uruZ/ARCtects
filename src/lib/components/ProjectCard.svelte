@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { Project } from '$lib/types';
+	import { resolve } from '$app/paths';
+import type { Project } from '$lib/types';
 
 	interface Props {
 		project: Project;
@@ -10,7 +11,7 @@
 </script>
 
 <a
-	href="/projects/{project.slug}"
+	href={resolve("/projects/{project.slug}")}
 	class="group block cursor-pointer"
 	aria-label="Ver projeto {project.title}"
 >

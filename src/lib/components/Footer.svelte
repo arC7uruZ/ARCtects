@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { resolve } from "$app/paths";
+
 	const navLinks = [
-		{ href: '/', label: 'Início' },
-		{ href: '/projects', label: 'Projetos' },
-		{ href: '/about', label: 'Sobre' },
-		{ href: '/contact', label: 'Contato' }
+		{ href: resolve('/'), label: 'Início' },
+		{ href: resolve('/projects'), label: 'Projetos' },
+		{ href: resolve('/about'), label: 'Sobre' },
+		{ href: resolve('/contact'), label: 'Contato' }
 	];
 </script>
 

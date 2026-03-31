@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { TeamMember } from '$lib/types';
+	import { resolve } from '$app/paths';
+import type { TeamMember } from '$lib/types';
 
 	const team: TeamMember[] = [
 		{
@@ -199,7 +200,7 @@
 			Adoraríamos ouvir sobre o seu projeto. Vamos iniciar uma conversa.
 		</p>
 		<a
-			href="/contact"
+			href={resolve("/contact")}
 			class="inline-flex items-center gap-3 font-body text-[11px] tracking-[0.2em] uppercase text-white cursor-pointer transition-all duration-300 px-8 py-4"
 			style="border: 1px solid rgba(255,255,255,0.35);"
 			onmouseenter={(e) => {
