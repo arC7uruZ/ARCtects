@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-import type { Project } from '$lib/types';
+	import type { Project } from '$lib/types';
 
 	interface Props {
 		project: Project;
@@ -23,7 +23,7 @@ import type { Project } from '$lib/types';
 			loading={eager ? 'eager' : 'lazy'}
 			width="1200"
 			height="800"
-			class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+			class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
 		/>
 		<!-- Overlay ao passar o mouse -->
 		<div
@@ -37,7 +37,7 @@ import type { Project } from '$lib/types';
 		></div>
 		<!-- Categoria -->
 		<div
-			class="absolute top-4 left-4 font-body text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 text-white"
+			class="font-body absolute top-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.2em] text-white uppercase"
 			style="background-color: rgba(15,23,42,0.6); letter-spacing: 0.2em;"
 		>
 			{#if project.category === 'Residential'}
@@ -59,7 +59,7 @@ import type { Project } from '$lib/types';
 			{project.location} — {project.year}
 		</p>
 		<h3
-			class="font-display text-xl lg:text-2xl mt-1 transition-colors duration-300"
+			class="font-display mt-1 text-xl transition-colors duration-300 lg:text-2xl"
 			style="color: var(--color-ink);"
 			onmouseenter={(e) =>
 				((e.currentTarget as HTMLElement).style.color = 'var(--color-secondary)')}
@@ -67,7 +67,7 @@ import type { Project } from '$lib/types';
 		>
 			{project.title}
 		</h3>
-		<p class="font-body text-sm font-light mt-1.5 line-clamp-2" style="color: var(--color-muted);">
+		<p class="font-body mt-1.5 line-clamp-2 text-sm font-light" style="color: var(--color-muted);">
 			{project.shortDescription}
 		</p>
 	</div>

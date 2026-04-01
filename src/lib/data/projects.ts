@@ -17,9 +17,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/volta-2/1200/800',
 			'https://picsum.photos/seed/volta-3/800/1200',
 			'https://picsum.photos/seed/volta-4/1200/800',
-			'https://picsum.photos/seed/volta-5/1200/800'
+			'https://picsum.photos/seed/volta-5/1200/800',
 		],
-		featured: true
+		featured: true,
 	},
 	{
 		slug: 'meridian-tower',
@@ -36,9 +36,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/meridian-1/1200/800',
 			'https://picsum.photos/seed/meridian-2/1200/800',
 			'https://picsum.photos/seed/meridian-3/1200/800',
-			'https://picsum.photos/seed/meridian-4/800/1200'
+			'https://picsum.photos/seed/meridian-4/800/1200',
 		],
-		featured: true
+		featured: true,
 	},
 	{
 		slug: 'casa-serena',
@@ -46,7 +46,8 @@ export const projects: Project[] = [
 		category: 'Residential',
 		year: 2023,
 		location: 'Búzios, Brasil',
-		shortDescription: 'Um refúgio costeiro onde paredes caiadas se encontram com o horizonte do Atlântico.',
+		shortDescription:
+			'Um refúgio costeiro onde paredes caiadas se encontram com o horizonte do Atlântico.',
 		description:
 			'Erguida sobre uma encosta com vista para o Atlântico, a Casa Serena incorpora uma contenção mediterrânea filtrada por uma sensibilidade tropical. Grossas paredes caiadas fornecem massa térmica e sombra, enquanto aberturas estreitas enquadram vistas selecionadas do mar. A paisagem se dissolve nos níveis em terraço da edificação, e cada degrau é uma meditação sobre a relação entre forma construída e terreno natural.',
 		heroImage: 'https://picsum.photos/seed/serena-hero/1600/900',
@@ -54,9 +55,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/serena-1/1200/800',
 			'https://picsum.photos/seed/serena-2/1200/800',
 			'https://picsum.photos/seed/serena-3/800/1200',
-			'https://picsum.photos/seed/serena-4/1200/800'
+			'https://picsum.photos/seed/serena-4/1200/800',
 		],
-		featured: true
+		featured: true,
 	},
 	{
 		slug: 'pavilhao-cultural',
@@ -74,9 +75,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/pavilhao-2/1200/800',
 			'https://picsum.photos/seed/pavilhao-3/1200/800',
 			'https://picsum.photos/seed/pavilhao-4/800/1200',
-			'https://picsum.photos/seed/pavilhao-5/1200/800'
+			'https://picsum.photos/seed/pavilhao-5/1200/800',
 		],
-		featured: true
+		featured: true,
 	},
 	{
 		slug: 'terra-office',
@@ -92,9 +93,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/terra-1/1200/800',
 			'https://picsum.photos/seed/terra-2/1200/800',
 			'https://picsum.photos/seed/terra-3/800/1200',
-			'https://picsum.photos/seed/terra-4/1200/800'
+			'https://picsum.photos/seed/terra-4/1200/800',
 		],
-		featured: false
+		featured: false,
 	},
 	{
 		slug: 'museu-forma',
@@ -111,9 +112,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/museu-1/1200/800',
 			'https://picsum.photos/seed/museu-2/1200/800',
 			'https://picsum.photos/seed/museu-3/1200/800',
-			'https://picsum.photos/seed/museu-4/800/1200'
+			'https://picsum.photos/seed/museu-4/800/1200',
 		],
-		featured: false
+		featured: false,
 	},
 	{
 		slug: 'residencia-luz',
@@ -121,7 +122,8 @@ export const projects: Project[] = [
 		category: 'Residential',
 		year: 2024,
 		location: 'Florianópolis, Brasil',
-		shortDescription: 'Uma residência na encosta projetada como uma sequência de vãos preenchidos de luz.',
+		shortDescription:
+			'Uma residência na encosta projetada como uma sequência de vãos preenchidos de luz.',
 		description:
 			'A Residência Luz é organizada em torno de um poço de luz central que conduz a claridade solar às profundezas da planta, eliminando a necessidade de iluminação artificial durante o dia. A seção responde à topografia da encosta, com cada nível descendo a ladeira para capturar as vistas da baía. Pedra e madeira de origem local ancoram a linguagem formal contemporânea em seu entorno natural.',
 		heroImage: 'https://picsum.photos/seed/luz-hero/1600/900',
@@ -129,9 +131,9 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/luz-1/1200/800',
 			'https://picsum.photos/seed/luz-2/800/1200',
 			'https://picsum.photos/seed/luz-3/1200/800',
-			'https://picsum.photos/seed/luz-4/1200/800'
+			'https://picsum.photos/seed/luz-4/1200/800',
 		],
-		featured: false
+		featured: false,
 	},
 	{
 		slug: 'centro-civico',
@@ -147,10 +149,10 @@ export const projects: Project[] = [
 			'https://picsum.photos/seed/civico-1/1200/800',
 			'https://picsum.photos/seed/civico-2/1200/800',
 			'https://picsum.photos/seed/civico-3/800/1200',
-			'https://picsum.photos/seed/civico-4/1200/800'
+			'https://picsum.photos/seed/civico-4/1200/800',
 		],
-		featured: false
-	}
+		featured: false,
+	},
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);

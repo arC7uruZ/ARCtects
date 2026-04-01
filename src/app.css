@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
 	--color-primary: #0f172a;
@@ -9,7 +9,7 @@
 	--color-warm-gray: #e8e4df;
 	--color-muted: #94a3b8;
 
-	--font-display: 'Cinzel', Georgia, serif;
+	--font-display: 'Raleway', system-ui, sans-serif;
 	--font-body: 'Josefin Sans', system-ui, sans-serif;
 }
 
@@ -45,6 +45,16 @@
 	:focus-visible {
 		outline: 2px solid var(--color-cta);
 		outline-offset: 3px;
+	}
+}
+
+/* Animations */
+@keyframes scrollLine {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(200%);
 	}
 }
 

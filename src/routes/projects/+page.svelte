@@ -7,16 +7,14 @@
 	let selectedCategory = $state<Category>('All');
 
 	let filtered = $derived(
-		selectedCategory === 'All'
-			? projects
-			: projects.filter((p) => p.category === selectedCategory)
+		selectedCategory === 'All' ? projects : projects.filter((p) => p.category === selectedCategory)
 	);
 
 	const counts: Record<Category, number> = {
 		All: projects.length,
 		Residential: projects.filter((p) => p.category === 'Residential').length,
 		Commercial: projects.filter((p) => p.category === 'Commercial').length,
-		Cultural: projects.filter((p) => p.category === 'Cultural').length
+		Cultural: projects.filter((p) => p.category === 'Cultural').length,
 	};
 </script>
 
@@ -29,37 +27,41 @@
 </svelte:head>
 
 <!-- Cabeçalho da página -->
-<div class="pt-40 pb-16 max-w-7xl mx-auto px-6 lg:px-12">
+<div class="mx-auto max-w-7xl px-6 pt-40 pb-16 lg:px-12">
 	<p
-		class="font-body text-[11px] tracking-[0.3em] uppercase mb-4"
+		class="font-body mb-4 text-[11px] tracking-[0.3em] uppercase"
 		style="color: var(--color-muted);"
 	>
 		Portfólio
 	</p>
 	<h1
-		class="font-display leading-none mb-12"
+		class="font-display mb-12 leading-none"
 		style="font-size: clamp(3rem, 8vw, 8rem); color: var(--color-ink); letter-spacing: -0.02em;"
 	>
 		Todos os<br />Projetos
 	</h1>
-	<CategoryFilter selected={selectedCategory} {counts} onselect={(cat) => (selectedCategory = cat)} />
+	<CategoryFilter
+		selected={selectedCategory}
+		{counts}
+		onselect={(cat) => (selectedCategory = cat)}
+	/>
 </div>
 
 <!-- Divisor -->
-<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="mx-auto max-w-7xl px-6 lg:px-12">
 	<hr style="border-color: var(--color-warm-gray);" />
 </div>
 
 <!-- Grade de projetos -->
-<section class="max-w-7xl mx-auto px-6 lg:px-12 py-12 pb-32">
+<section class="mx-auto max-w-7xl px-6 py-12 pb-32 lg:px-12">
 	{#if filtered.length === 0}
-		<p class="font-body text-center py-24" style="color: var(--color-muted);">
+		<p class="font-body py-24 text-center" style="color: var(--color-muted);">
 			Nenhum projeto nesta categoria ainda.
 		</p>
 	{:else}
-		<div class="columns-1 md:columns-2 gap-8 lg:gap-12">
+		<div class="columns-1 gap-8 md:columns-2 lg:gap-12">
 			{#each filtered as project, i}
-				<div class="mb-8 lg:mb-12 break-inside-avoid">
+				<div class="mb-8 break-inside-avoid lg:mb-12">
 					<ProjectCard {project} eager={i < 2} />
 				</div>
 			{/each}

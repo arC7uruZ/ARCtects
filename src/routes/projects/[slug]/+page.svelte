@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -28,17 +28,17 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 		fetchpriority="high"
 		width="1600"
 		height="900"
-		class="absolute inset-0 w-full h-full object-cover"
+		class="absolute inset-0 h-full w-full object-cover"
 	/>
 	<div
 		class="absolute inset-0"
 		style="background: linear-gradient(to top, rgba(2,6,23,0.8) 0%, rgba(2,6,23,0.3) 50%, rgba(2,6,23,0.1) 100%);"
 	></div>
 
-	<div class="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 lg:px-12 pb-14 md:pb-20 z-10">
-		<div class="flex flex-wrap items-center gap-3 mb-5">
+	<div class="absolute right-0 bottom-0 left-0 z-10 mx-auto max-w-7xl px-6 pb-14 md:pb-20 lg:px-12">
+		<div class="mb-5 flex flex-wrap items-center gap-3">
 			<span
-				class="font-body text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 text-white"
+				class="font-body px-3 py-1.5 text-[10px] tracking-[0.2em] text-white uppercase"
 				style="background-color: rgba(202,138,4,0.9); letter-spacing: 0.2em;"
 			>
 				{categoryLabel(project.category)}
@@ -48,7 +48,7 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 			<span class="font-body text-xs text-white/60">{project.location}</span>
 		</div>
 		<h1
-			class="font-display text-white leading-tight"
+			class="font-display leading-tight text-white"
 			style="font-size: clamp(2.5rem, 7vw, 7rem); letter-spacing: -0.02em;"
 		>
 			{project.title}
@@ -57,11 +57,11 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 </section>
 
 <!-- Descrição do projeto -->
-<section class="py-20 md:py-28 max-w-7xl mx-auto px-6 lg:px-12">
-	<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-20">
+<section class="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:px-12">
+	<div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-20">
 		<div class="lg:col-span-2">
 			<p
-				class="font-body text-base lg:text-lg font-light leading-[1.85]"
+				class="font-body text-base leading-[1.85] font-light lg:text-lg"
 				style="color: var(--color-secondary); max-width: 68ch;"
 			>
 				{project.description}
@@ -70,15 +70,10 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 		<!-- Ficha técnica -->
 		<div class="space-y-8">
-			{#each [
-				{ label: 'Projeto', value: project.title },
-				{ label: 'Tipologia', value: categoryLabel(project.category) },
-				{ label: 'Ano', value: String(project.year) },
-				{ label: 'Localização', value: project.location }
-			] as meta}
+			{#each [{ label: 'Projeto', value: project.title }, { label: 'Tipologia', value: categoryLabel(project.category) }, { label: 'Ano', value: String(project.year) }, { label: 'Localização', value: project.location }] as meta}
 				<div>
 					<p
-						class="font-body text-[10px] tracking-[0.2em] uppercase mb-1.5"
+						class="font-body mb-1.5 text-[10px] tracking-[0.2em] uppercase"
 						style="color: var(--color-muted);"
 					>
 						{meta.label}
@@ -91,44 +86,73 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 </section>
 
 <!-- Galeria -->
-<section class="pb-20 md:pb-28 max-w-7xl mx-auto px-6 lg:px-12">
+<section class="mx-auto max-w-7xl px-6 pb-20 md:pb-28 lg:px-12">
 	<!-- Imagem principal -->
-	<div class="relative overflow-hidden mb-4" style="aspect-ratio: 16/9;">
+	<div class="relative mb-4 overflow-hidden" style="aspect-ratio: 16/9;">
 		<img
 			src={project.images[activeImage]}
 			alt="{project.title} — vista {activeImage + 1}"
 			loading="lazy"
 			width="1200"
 			height="675"
-			class="w-full h-full object-cover transition-opacity duration-300"
+			class="h-full w-full object-cover transition-opacity duration-300"
 		/>
 		{#if project.images.length > 1}
 			<button
-				class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-200"
+				class="absolute top-1/2 left-4 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center transition-colors duration-200"
 				style="background-color: rgba(15,23,42,0.6);"
-				onclick={() => (activeImage = (activeImage - 1 + project.images.length) % project.images.length)}
+				onclick={() =>
+					(activeImage = (activeImage - 1 + project.images.length) % project.images.length)}
 				aria-label="Imagem anterior"
-				onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.9)')}
-				onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.6)')}
+				onmouseenter={(e) =>
+					((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.9)')}
+				onmouseleave={(e) =>
+					((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.6)')}
 			>
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" aria-hidden="true">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="white"
+					stroke-width="1.5"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+					/>
 				</svg>
 			</button>
 			<button
-				class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-200"
+				class="absolute top-1/2 right-4 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center transition-colors duration-200"
 				style="background-color: rgba(15,23,42,0.6);"
 				onclick={() => (activeImage = (activeImage + 1) % project.images.length)}
 				aria-label="Próxima imagem"
-				onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.9)')}
-				onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.6)')}
+				onmouseenter={(e) =>
+					((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.9)')}
+				onmouseleave={(e) =>
+					((e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(15,23,42,0.6)')}
 			>
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" aria-hidden="true">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="white"
+					stroke-width="1.5"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+					/>
 				</svg>
 			</button>
 			<div
-				class="absolute bottom-4 right-4 font-body text-xs text-white"
+				class="font-body absolute right-4 bottom-4 text-xs text-white"
 				style="background-color: rgba(15,23,42,0.6); padding: 4px 10px;"
 			>
 				{activeImage + 1} / {project.images.length}
@@ -140,8 +164,10 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 	<div class="grid gap-3" style="grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));">
 		{#each project.images as img, i}
 			<button
-				class="relative overflow-hidden cursor-pointer transition-opacity duration-200"
-				style="aspect-ratio: 4/3; {i === activeImage ? 'opacity: 1; outline: 2px solid var(--color-cta);' : 'opacity: 0.55;'}"
+				class="relative cursor-pointer overflow-hidden transition-opacity duration-200"
+				style="aspect-ratio: 4/3; {i === activeImage
+					? 'opacity: 1; outline: 2px solid var(--color-cta);'
+					: 'opacity: 0.55;'}"
 				onclick={() => (activeImage = i)}
 				aria-label="Ver imagem {i + 1}"
 			>
@@ -151,7 +177,7 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 					loading="lazy"
 					width="400"
 					height="300"
-					class="w-full h-full object-cover"
+					class="h-full w-full object-cover"
 				/>
 			</button>
 		{/each}
@@ -161,8 +187,11 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 <!-- Projetos relacionados -->
 {#if related.length > 0}
 	<section class="py-20 md:py-28" style="background-color: var(--color-warm-gray);">
-		<div class="max-w-7xl mx-auto px-6 lg:px-12">
-			<p class="font-body text-[11px] tracking-[0.25em] uppercase mb-4" style="color: var(--color-muted);">
+		<div class="mx-auto max-w-7xl px-6 lg:px-12">
+			<p
+				class="font-body mb-4 text-[11px] tracking-[0.25em] uppercase"
+				style="color: var(--color-muted);"
+			>
 				Relacionados
 			</p>
 			<h2
@@ -171,7 +200,7 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 			>
 				Mais Projetos {categoryLabel(project.category)}s
 			</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 				{#each related as rel}
 					<ProjectCard project={rel} />
 				{/each}
@@ -181,16 +210,28 @@ import ProjectCard from '$lib/components/ProjectCard.svelte';
 {/if}
 
 <!-- Link de volta -->
-<div class="py-12 max-w-7xl mx-auto px-6 lg:px-12">
+<div class="mx-auto max-w-7xl px-6 py-12 lg:px-12">
 	<a
-		href={resolve("/projects")}
-		class="inline-flex items-center gap-3 font-body text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-200"
+		href={resolve('/projects')}
+		class="font-body inline-flex cursor-pointer items-center gap-3 text-[11px] tracking-[0.2em] uppercase transition-colors duration-200"
 		style="color: var(--color-secondary);"
 		onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-ink)')}
 		onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-secondary)')}
 	>
-		<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-			<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+		<svg
+			width="14"
+			height="14"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.5"
+			aria-hidden="true"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+			/>
 		</svg>
 		Todos os Projetos
 	</a>

@@ -13,14 +13,18 @@
 		{ value: 'All', label: 'Todos' },
 		{ value: 'Residential', label: 'Residencial' },
 		{ value: 'Commercial', label: 'Comercial' },
-		{ value: 'Cultural', label: 'Cultural' }
+		{ value: 'Cultural', label: 'Cultural' },
 	];
 </script>
 
-<div class="flex flex-wrap gap-6 md:gap-10" role="group" aria-label="Filtrar projetos por categoria">
+<div
+	class="flex flex-wrap gap-6 md:gap-10"
+	role="group"
+	aria-label="Filtrar projetos por categoria"
+>
 	{#each categories as cat}
 		<button
-			class="group flex items-center gap-2 font-body text-[11px] tracking-[0.2em] uppercase pb-1 cursor-pointer transition-all duration-200"
+			class="group font-body flex cursor-pointer items-center gap-2 pb-1 text-[11px] tracking-[0.2em] uppercase transition-all duration-200"
 			style={selected === cat.value
 				? 'color: var(--color-ink); border-bottom: 1px solid var(--color-ink);'
 				: 'color: var(--color-muted); border-bottom: 1px solid transparent;'}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-    import { resolve } from '$app/paths';
+	import { resolve } from '$app/paths';
 
 	let scrolled = $state(false);
 	let menuOpen = $state(false);
@@ -24,7 +24,7 @@
 	const links = [
 		{ href: resolve('/projects'), label: 'Projetos' },
 		{ href: resolve('/about'), label: 'Sobre' },
-		{ href: resolve('/contact'), label: 'Contato' }
+		{ href: resolve('/contact'), label: 'Contato' },
 	];
 
 	function isActive(href: string): boolean {
@@ -33,25 +33,25 @@
 </script>
 
 <header
-	class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+	class="fixed top-0 right-0 left-0 z-50 transition-all duration-500"
 	style={scrolled || menuOpen
 		? 'background-color: var(--color-primary);'
 		: 'background-color: transparent;'}
 >
 	<nav
-		class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20"
+		class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12"
 		aria-label="Navegação principal"
 	>
 		<!-- Logo -->
 		<a
-			href={resolve("/")}
+			href={resolve('/')}
 			class="font-display text-xl font-semibold tracking-widest text-white transition-colors duration-200 hover:text-[var(--color-cta)]"
 		>
 			ARC<span class="font-light">tects</span>
 		</a>
 
 		<!-- Desktop nav -->
-		<ul class="hidden md:flex items-center gap-12" role="list">
+		<ul class="hidden items-center gap-12 md:flex" role="list">
 			{#each links as link}
 				<li>
 					<a
@@ -73,13 +73,13 @@
 
 		<!-- Mobile hamburger -->
 		<button
-			class="md:hidden flex flex-col justify-between w-6 h-[18px] cursor-pointer"
+			class="flex h-[18px] w-6 cursor-pointer flex-col justify-between md:hidden"
 			onclick={() => (menuOpen = !menuOpen)}
 			aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
 			aria-expanded={menuOpen}
 		>
 			<span
-				class="block h-px w-full bg-white transition-all duration-300 origin-center"
+				class="block h-px w-full origin-center bg-white transition-all duration-300"
 				style={menuOpen ? 'transform: translateY(8.5px) rotate(45deg)' : ''}
 			></span>
 			<span
@@ -87,7 +87,7 @@
 				style={menuOpen ? 'opacity: 0' : ''}
 			></span>
 			<span
-				class="block h-px w-full bg-white transition-all duration-300 origin-center"
+				class="block h-px w-full origin-center bg-white transition-all duration-300"
 				style={menuOpen ? 'transform: translateY(-8.5px) rotate(-45deg)' : ''}
 			></span>
 		</button>
@@ -96,7 +96,7 @@
 	<!-- Mobile menu -->
 	{#if menuOpen}
 		<div
-			class="md:hidden px-6 pb-10 pt-4"
+			class="px-6 pt-4 pb-10 md:hidden"
 			style="background-color: var(--color-primary); border-top: 1px solid rgba(255,255,255,0.1);"
 		>
 			<ul class="flex flex-col gap-8" role="list">
@@ -104,7 +104,7 @@
 					<li>
 						<a
 							href={link.href}
-							class="font-display text-3xl text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
+							class="font-display cursor-pointer text-3xl text-white/80 transition-colors duration-200 hover:text-white"
 							onclick={() => (menuOpen = false)}
 						>
 							{link.label}

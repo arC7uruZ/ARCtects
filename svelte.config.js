@@ -10,12 +10,12 @@ const config = {
 			assets: 'build',
 			fallback: undefined,
 			precompress: false,
-			strict: true
+			strict: true,
 		}),
-        paths: {
-            base: '/ARCtects',
-        }
-	}
+		paths: {
+			base: '/ARCtects',
+		},
+	},
 };
 
 export default config;
