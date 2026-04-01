@@ -38,16 +38,20 @@
 		? 'background-color: var(--color-primary);'
 		: 'background-color: transparent;'}
 >
+	<div
+		class="absolute inset-0 -z-10 h-40 bg-linear-to-b from-black/40 from-0% to-black/0"
+		aria-hidden="true"
+	></div>
 	<nav
-		class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12"
+		class="mx-auto flex h-20 items-center justify-between px-6 py-12 lg:px-12"
 		aria-label="Navegação principal"
 	>
 		<!-- Logo -->
 		<a
 			href={resolve('/')}
-			class="font-display text-xl font-semibold tracking-widest text-white transition-colors duration-200 hover:text-[var(--color-cta)]"
+			class="font-display text-3xl font-semibold tracking-tight text-white transition-all duration-800 md:text-xl lg:text-3xl"
 		>
-			ARC<span class="font-light">tects</span>
+			ARC<span class="font-light">TECTS</span>
 		</a>
 
 		<!-- Desktop nav -->
@@ -57,7 +61,7 @@
 					<a
 						href={link.href}
 						aria-current={isActive(link.href) ? 'page' : undefined}
-						class="font-body text-xs font-light tracking-[0.2em] uppercase transition-colors duration-200"
+						class="font-body flex items-center gap-1 text-xl/tight font-light tracking-tighter uppercase transition-colors duration-200"
 						style={isActive(link.href) ? 'color: white;' : 'color: rgba(255,255,255,0.7);'}
 						onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'white')}
 						onmouseleave={(e) =>
@@ -65,7 +69,10 @@
 								? 'white'
 								: 'rgba(255,255,255,0.7)')}
 					>
-						{link.label}
+						<div class="size-3 rounded-full bg-white" aria-hidden="true"></div>
+						<div class="pt-1">
+							{link.label}
+                        </div>
 					</a>
 				</li>
 			{/each}
@@ -73,7 +80,7 @@
 
 		<!-- Mobile hamburger -->
 		<button
-			class="flex h-[18px] w-6 cursor-pointer flex-col justify-between md:hidden"
+			class="flex h-4.5 w-6 cursor-pointer flex-col justify-between md:hidden"
 			onclick={() => (menuOpen = !menuOpen)}
 			aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
 			aria-expanded={menuOpen}

@@ -24,7 +24,7 @@
 		autoplay
 		muted
 		loop
-		class="absolute inset-0 size-full object-cover"
+		class="absolute inset-0 size-full object-cover brightness-90"
 	></video>
 	<div
 		class="absolute inset-0"
@@ -35,8 +35,7 @@
 		class="relative z-10 flex w-full items-center justify-between px-6 pb-10 lg:px-12"
 	>
 		<h1
-			class="font-display font-regular leading-none text-white uppercase"
-			style="font-size: clamp(3.2rem, 9vw, 9.5rem); letter-spacing: -0.02em;"
+			class="font-display font-regular leading-none text-[clamp(3.2rem,9vw,9.5rem)] tracking-tighter text-white uppercase"
 		>
 			Espaço<br />Como Arte
 		</h1>
