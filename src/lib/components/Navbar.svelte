@@ -5,6 +5,7 @@
 	import NavItem from './NavItem.svelte';
 
 	let scrolled = $state(false);
+	let hidden = $state(false);
 	let menuOpen = $state(false);
 
 	$effect(() => {
@@ -14,9 +15,30 @@
 	});
 
 	onMount(() => {
+		let lastY = window.scrollY;
+
 		const onScroll = () => {
-			scrolled = window.scrollY > 60;
+			const currentY = window.scrollY;
+			const delta = currentY - lastY;
+
+			scrolled = currentY > 60;
+
+			if (menuOpen) {
+				lastY = currentY;
+				return;
+			}
+
+			if (currentY < 60) {
+				hidden = false;
+			} else if (delta > 4) {
+				hidden = true;
+			} else if (delta < -4) {
+				hidden = false;
+			}
+
+			lastY = currentY;
 		};
+
 		window.addEventListener('scroll', onScroll, { passive: true });
 		onScroll();
 		return () => window.removeEventListener('scroll', onScroll);
@@ -35,9 +57,10 @@
 
 <header
 	class="fixed top-0 right-0 left-0 z-50 transition-all duration-500"
-	style={scrolled || menuOpen
+	style="{scrolled || menuOpen
 		? 'background-color: var(--color-primary);'
-		: 'background-color: transparent;'}
+		: 'background-color: transparent;'} transform: translateY({hidden ? '-100%' : '0'});"
+	inert={hidden || undefined}
 >
 	<div
 		class="absolute inset-0 -z-10 h-40 bg-linear-to-b from-black/40 from-0% to-black/0"
