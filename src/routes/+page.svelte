@@ -1,7 +1,18 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { onMount } from 'svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { featuredProjects } from '$lib/data/projects';
+
+	let isDesktop = $state(false);
+
+	onMount(() => {
+		const mq = window.matchMedia('(min-width: 768px)');
+		isDesktop = mq.matches;
+		const onChange = (e: MediaQueryListEvent) => { isDesktop = e.matches; };
+		mq.addEventListener('change', onChange);
+		return () => mq.removeEventListener('change', onChange);
+	});
 </script>
 
 <svelte:head>
@@ -15,27 +26,34 @@
 <!-- Hero -->
 <div style="height: 100svh; min-height: 600px;"></div>
 <section
-	class="fixed -z-10 top-0 flex w-full items-end overflow-hidden"
+	class="fixed top-0 -z-10 flex w-full items-end overflow-hidden"
 	style="height: 100svh; min-height: 600px;"
 >
-	<video
-		src="videos/bg.mp4"
+	<img
+		src="images/bg.png"
+		alt="background-image"
 		aria-hidden="true"
-		autoplay
-		muted
-		loop
 		class="absolute inset-0 size-full object-cover brightness-90"
-	></video>
+	/>
+	{#if isDesktop}
+		<video
+			src="videos/bg.mp4"
+			aria-hidden="true"
+			autoplay
+			muted
+			loop
+			playsinline
+			class="absolute inset-0 size-full object-cover brightness-90"
+		></video>
+	{/if}
 	<div
 		class="absolute inset-0"
 		style="background: linear-gradient(to top, rgba(2,6,23,0.85) 0%, rgba(2,6,23,0.35) 60%, rgba(2,6,23,0.2) 100%);"
 	></div>
 
-	<div
-		class="relative z-10 flex w-full items-center justify-between px-6 pb-10 lg:px-12"
-	>
+	<div class="relative z-10 flex w-full items-center justify-between px-6 pb-10 lg:px-12">
 		<h1
-			class="font-display font-regular leading-none text-[clamp(3.2rem,9vw,9.5rem)] tracking-tighter text-white uppercase"
+			class="font-display font-regular text-[clamp(3.2rem,9vw,9.5rem)] leading-none tracking-tighter text-white uppercase"
 		>
 			Espaço<br />Como Arte
 		</h1>
