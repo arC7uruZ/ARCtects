@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
+	import NavItem from './NavItem.svelte';
 
 	let scrolled = $state(false);
 	let menuOpen = $state(false);
@@ -58,22 +59,7 @@
 		<ul class="hidden items-center gap-12 md:flex" role="list">
 			{#each links as link}
 				<li>
-					<a
-						href={link.href}
-						aria-current={isActive(link.href) ? 'page' : undefined}
-						class="font-body flex items-center gap-1 text-xl/tight font-light tracking-tighter uppercase transition-colors duration-200"
-						style={isActive(link.href) ? 'color: white;' : 'color: rgba(255,255,255,0.7);'}
-						onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'white')}
-						onmouseleave={(e) =>
-							((e.currentTarget as HTMLElement).style.color = isActive(link.href)
-								? 'white'
-								: 'rgba(255,255,255,0.7)')}
-					>
-						<div class="size-3 rounded-full bg-white" aria-hidden="true"></div>
-						<div class="pt-1">
-							{link.label}
-                        </div>
-					</a>
+                    <NavItem text={link.label} href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}/>
 				</li>
 			{/each}
 		</ul>
