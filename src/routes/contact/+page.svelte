@@ -109,7 +109,7 @@
 						<p>
 							<a
 								href="mailto:studio@arctects.com"
-								class="transition-colors duration-200 hover:text-[var(--color-ink)]"
+								class="transition-colors duration-200 hover:text-ink"
 							>
 								studio@arctects.com
 							</a>
@@ -117,7 +117,7 @@
 						<p>
 							<a
 								href="tel:+551132985600"
-								class="transition-colors duration-200 hover:text-[var(--color-ink)]"
+								class="transition-colors duration-200 hover:text-ink"
 							>
 								+55 11 9999 9999 (SP)
 							</a>
@@ -125,7 +125,7 @@
 						<p>
 							<a
 								href="tel:+552132567890"
-								class="transition-colors duration-200 hover:text-[var(--color-ink)]"
+								class="transition-colors duration-200 hover:text-ink"
 							>
 								+55 21 8888 8888 (RJ)
 							</a>
